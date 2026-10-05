@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід та Реєстрація</title>
+</head>
+<body>
+  <h2>Реєстрація</h2>
+  <form id="regForm">
+    <input type="text" id="regUser" placeholder="Username" required><br><br>
+    <input type="password" id="regPass" placeholder="Password" required><br><br>
+    <button type="submit">Зареєструватися</button>
+  </form>
+
+  <hr>
+
+  <h2>Вхід</h2>
+  <form id="loginForm">
+    <input type="text" id="loginUser" placeholder="Username" required><br><br>
+    <input type="password" id="loginPass" placeholder="Password" required><br><br>
+    <button type="submit">Увійти</button>
+  </form>
+
+  <script>
+    document.getElementById('regForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('regUser').value,
+          password: document.getElementById('regPass').value
+        })
+      });
+      const data = await res.json();
+      alert(data.message);
+    };
+
+    document.getElementById('loginForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: document.getElementById('loginUser').value,
+          password: document.getElementById('loginPass').value
+        })
+      });
+      const data = await res.json();
+      alert(data.message);
+      if (res.ok) window.location.href = '/home';
+    };
+  </script>
+</body>
+</html>

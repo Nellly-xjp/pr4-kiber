@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Панель Адміністратора</title>
+</head>
+<body>
+  <h1>Панель Адміністратора </h1>
+  <p>Ласкаво просимо, <b id="username">...</b>!</p>
+
+  <nav>
+    <a href="/home">На головну</a> | 
+    <button onclick="logout()">Вийти</button>
+  </nav>
+
+  <h2>Список всіх користувачів (тільки для ADMIN):</h2>
+  <ul id="usersList">Завантаження...</ul>
+
+  <script>
+    fetch('/api/me')
+      .then(res => res.ok ? res.json() : window.location.href = '/')
+      .then(data => {
+        document.getElementById('username').innerText = data.user.username;
+      });
+
+    fetch('/api/users')
+      .then(res => {
+        if (!res.ok) window.location.href = '/home';
+        return res.json();
+      })
+      .then(data => {
+        const list = document.getElementById('usersList');
+        list.innerHTML = '';
+        data.users.forEach(u => {
+          const li = document.createElement('li');
+          li.innerText = `ID: ${u.id} | Логін: ${u.username} | Роль: ${u.role} | Останній вхід: ${u.lastLogin || 'Немає даних'}`;
+          list.appendChild(li);
+        });
+      });
+
+    async function logout() {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/';
+    }
+  </script>
+</body>
+</html>

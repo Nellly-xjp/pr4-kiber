@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1791103505430,
+    "username": "user1",
+    "password": "$2b$10$vVz8iwRESJ7oIUUlKpfT6Ovyb4GNkeF.CJgXLQt2XOQmcc/kluMii",
+    "role": "ADMIN",
+    "lastLogin": "05.10.2026, 11:33:02"
+  },
+  {
+    "id": 1791104727174,
+    "username": "tanya",
+    "password": "$2b$10$s51QXYFGbpAcf8tCxQ9vV.9oky1z0Prn7lEn1LHOm2aVKK7nkHYtK",
+    "role": "USER"
+  },
+  {
+    "id": 1791104743613,
+    "username": "nelly",
+    "password": "$2b$10$6dJ8SIrnvUedxzZsUIVPQOUiDLCcyRDwIDqA202OJjl8KYcmqgexK",
+    "role": "USER"
+  },
+  {
+    "id": 1791189096588,
+    "username": "nelly12",
+    "password": "$2b$10$JRV3Wt1dFSxc3YlG3WHll.OC8QilIevc41norJdC5Oi/YyVobbNDG",
+    "role": "USER",
+    "lastLogin": "05.10.2026, 11:31:52"
+  }
+]
